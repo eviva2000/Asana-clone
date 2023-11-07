@@ -2,9 +2,8 @@
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
-     
     "target": "es2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-   
+
     /* Modules */
     "module": "commonjs" /* Specify what module code is generated. */,
     "outDir": "./server" /* Specify an output folder for all emitted files. */,
@@ -14,12 +13,9 @@
 
     /* Type Checking */
     "strict": true /* Enable all strict type-checking options. */,
-                      /* Disable error reporting for unreachable code. */
+    /* Disable error reporting for unreachable code. */
 
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
-
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  }
 }
