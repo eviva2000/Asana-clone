@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import styles from './signUp.module.css';
 import { Button, TextField, InputLabel, Checkbox, Alert, AlertTitle } from '@mui/material';
-import logo from '../../assets/icons/mangement.png';
+import logo from '../../assets/icons/logo.png';
 import image from '../../assets/images/Hands Show.svg';
 import { useNavigate } from 'react-router';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
