@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.main {
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  text-align: left;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex_container {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+}
+
+.icon {
+  cursor: pointer;
+  width: 11rem;
+  margin: 1rem;
+  display: flex;
+  color: #28246f;
+  align-items: baseline;
+  font-weight: 700;
+  gap: 0.5rem;
+  font-size: 2rem;
+}
+
+.logo_img {
+  width: 2.5rem;
+}
+
+.login_content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  padding: 0 1rem;
+}
+
+.style_label {
+  font: 'Manrope';
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 2%;
+  text-align: center;
+  color: #55555f;
+  width: 32px;
+  height: 18px;
+  margin-top: 15px;
+}
+
+.style2_label {
+  width: 57px;
+  height: 18px;
+  font: 'Manrope';
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 2%;
+  text-align: center;
+  color: #55555f;
+}
+
+.input_styles {
+  border: 1px solid #d8e0e8;
+  border-radius: 8px;
+  background: #f8f9fd;
+  margin-bottom: 0.5rem;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  align-self: center;
+  padding: 3rem;
+  width: clamp(15rem, 70%, 100rem);
+  max-height: 80vh;
+}
+
+.small {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 4%;
+  color: #89899c;
+}
+
+.button_style {
+  color: #f1f2f4;
+  border-radius: 8px;
+  height: 3rem;
+  margin-bottom: 3rem;
+  text-transform: lowercase;
+}
+
+.forgot {
+  font: Inter;
+  padding-left: 25px;
+  font-size: 15px;
+  color: #0b5fae;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 850px) {
+  .flex_container {
+    padding: 1rem;
+    padding-left: 7rem;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+  }
+  .image {
+    padding: 0 4rem;
+  }
+  .login_content {
+    margin-left: 0;
+  }
+}

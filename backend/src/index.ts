@@ -3,7 +3,7 @@ import db from './config/db-config';
 dotenv.config();
 import app from './app';
 
-const port = process.env.SERVER_PORT || 3000;
+const port = process.env.SERVER_PORT || 5000;
 
 // Establish the database connection before starting the server
 db.raw('SELECT VERSION()')
