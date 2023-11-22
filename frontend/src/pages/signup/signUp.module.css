@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.forgot_pass {
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+.flex_container {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+}
+
+.image {
+  align-self: center;
+  padding: 3rem;
+  width: clamp(15rem, 70%, 100rem);
+  max-height: 80vh;
+}
+
+.icon {
+  cursor: pointer;
+  width: 11rem;
+  margin: 1rem;
+  display: flex;
+  color: #28246f;
+  align-items: baseline;
+  font-weight: 700;
+  gap: 0.5rem;
+  font-size: 2rem;
+}
+
+.logo_img {
+  width: 2.5rem;
+}
+
+a {
+  color: #0b5fae;
+  cursor: pointer;
+}
+
+p {
+  color: #89899c;
+}
+
+.form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  padding: 0 1rem;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+}
+
+.input_styles {
+  border: 1px solid #d8e0e8;
+  border-radius: 8px;
+  background: #f8f9fd;
+  margin-bottom: 1rem;
+}
+
+.button_style {
+  color: #f1f2f4;
+  border-radius: 8px;
+  height: 3rem;
+  margin-bottom: 3rem;
+  text-transform: lowercase;
+}
+
+.sign_up {
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  text-align: left;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.small {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 4%;
+  color: #89899c;
+}
+
+.input_styles {
+  border: 1px solid #d8e0e8;
+  border-radius: 8px;
+  background: #f8f9fd;
+  margin-bottom: 1rem;
+}
+
+.button_style {
+  color: #f1f2f4;
+  border-radius: 8px;
+  height: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media only screen and (min-width: 850px) {
+  .flex_container {
+    padding: 1rem;
+    padding-left: 7rem;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+  }
+  .image {
+    padding: 0 4rem;
+  }
+  .form {
+    margin-left: 0;
+  }
+}

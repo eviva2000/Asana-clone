@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../pages/forgotPassword/forgotPassword.module.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import logo from '../assets/icons/mangement.png';
+import logo from '../assets/icons/logo.png';
 import image from '../assets/images/Stuck at Home Sitting On Floor.svg';
 import { useNavigate } from 'react-router-dom';
 

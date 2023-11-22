@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { TextField, Button, Checkbox, Typography, Alert, AlertTitle } from '@mui/material';
-import logo from '../../assests/icons/mangement.png';
+import logo from '../../assests/icons/logo.png';
 import image from '../../assets/images/login-img.jpg';
 import styles from './LoginPage.module.css';
 import {
