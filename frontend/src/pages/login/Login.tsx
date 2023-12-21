@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { TextField, Button, Checkbox, Typography, Alert, AlertTitle } from '@mui/material';
-import logo from '../../assests/icons/logo.png';
-import image from '../../assets/images/login-img.jpg';
-import styles from './LoginPage.module.css';
+import logo from '../../assets/icons/managment.png';
+import image from '../../assets/images/Stuck at Home Imagination.jpg';
+import styles from './login.module.css';
+
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -31,7 +32,6 @@ const LoginPage: React.FC = () => {
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm<FormData>();
-
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {

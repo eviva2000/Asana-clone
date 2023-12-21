@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.header_right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.signOut {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #24292f;
+  text-decoration: none;
+  margin-right: 1em;
+  padding-left: 1rem;
+}
+
+.signOut:hover {
+  color: #800c93;
+}
+
+#h1 {
+  color: #28246f;
+}
+.lothbrok {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

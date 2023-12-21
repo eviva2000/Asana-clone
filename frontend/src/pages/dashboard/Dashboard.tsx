@@ -1,5 +1,6 @@
 import styles from './Dashboard.module.css';
 import { Outlet } from 'react-router-dom';
+import { Header, MenuDesktop } from '../../IndexForImport';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, getAuth, onAuthStateChanged } from '@firebase/auth';
@@ -16,8 +17,6 @@ const Dashboard = () => {
     onAuthStateChanged(auth, async (user: User | null) => {
       if (user) {
         try {
-          const request = await api();
-          await request.get('/project');
           setLoading(false);
         } catch (e) {
           console.error(e);

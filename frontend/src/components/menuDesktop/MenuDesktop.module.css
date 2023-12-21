@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.desktop_left_bar {
+  background-color: var(--purple--80);
+  height: 100vh;
+  position: fixed;
+  width: 16rem;
+  padding: 1rem;
+}
+
+.header {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.logo_menu {
+  width: 35px;
+  height: 35px;
+  justify-items: center;
+}
+
+.logo_div {
+  display: flex;
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.current_path {
+  background-color: #fff;
+}
+
+.current_path .list_name {
+  color: var(--purple--80);
+  font-weight: 900;
+}
+
+.list_item {
+  border-radius: 8px;
+  padding: 0.25rem 0;
+}
+
+.list_top > * {
+  margin-bottom: 1rem;
+}
+
+#list_bottom {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.icons {
+  width: 1.25rem;
+}
+
+.list_name {
+  color: var(--text--10);
+  font-family: Manrope;
+  font-weight: 400;
+}
+
+.list_item:hover .list_name {
+  color: var(--purple--80);
+  font-weight: 900;
+}
+
+.swipeableDrawer {
+  background-color: var(--purple--80);
+  height: 100vh;
+  position: relative;
+}
+
+.list_item:hover {
+  background-color: var(--text--10);
+}
+
+.list_item_link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+#list_bottom {
+  position: absolute;
+  bottom: 2rem;
+}
+
+.list_top {
+  color: var(--text--10);
+}
+
+.list_bottom {
+  margin-bottom: 1rem;
+  color: var(--text--10);
+}
+
+@media (max-width: 1024px) {
+  .desktop_left_bar {
+    display: none;
+  }
+}

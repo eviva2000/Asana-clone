@@ -1,13 +1,190 @@
+:root {
+  --text--10: #ffffff;
+  --text--20: #b3b1bb;
+  --text--40: #7d7a89;
+  --text--60: #55555f;
+  --text--80: #4c4958;
+  --text--100: #2b283d;
+  --text--10: #ffffff;
+  --text--20: #b3b1bb;
+  --text--40: #7d7a89;
+  --text--60: #55555f;
+  --text--80: #4c4958;
+  --text--100: #2b283d;
+
+  --purple--10: #dad9f5;
+  --purple--20: #b4b1e5;
+  --purple--40: #7e7bb2;
+  --purple--60: #44408a;
+  --purple--80: #28246f;
+  --purple--100: #110d59;
+  --purple--10: #dad9f5;
+  --purple--20: #b4b1e5;
+  --purple--40: #7e7bb2;
+  --purple--60: #44408a;
+  --purple--80: #28246f;
+  --purple--100: #110d59;
+
+  --blue--10: #cfe8ff;
+  --blue--20: #a3d1fc;
+  --blue--40: #3f9cf2;
+  --blue--60: #0e77d9;
+  --blue--80: #0b5fae;
+  --blue--100: #08437a;
+  --blue--10: #cfe8ff;
+  --blue--20: #a3d1fc;
+  --blue--40: #3f9cf2;
+  --blue--60: #0e77d9;
+  --blue--80: #0b5fae;
+  --blue--100: #08437a;
+
+  --cyan--10: #d5ecf5;
+  --cyan--20: #9fd1e4;
+  --cyan--40: #6ab8d6;
+  --cyan--60: #3fa0c6;
+  --cyan--80: #2086ad;
+  --cyan--100: #005f84;
+  --cyan--10: #d5ecf5;
+  --cyan--20: #9fd1e4;
+  --cyan--40: #6ab8d6;
+  --cyan--60: #3fa0c6;
+  --cyan--80: #2086ad;
+  --cyan--100: #005f84;
+
+  --green--10: #d9fcf1;
+  --green--20: #c7f8e9;
+  --green--40: #95f4d8;
+  --green--60: #55e7bb;
+  --green--80: #1ac391;
+  --green--10: #d9fcf1;
+  --green--20: #c7f8e9;
+  --green--40: #95f4d8;
+  --green--60: #55e7bb;
+  --green--80: #1ac391;
+  --green--100: #039267;
+
+  --green2--10: #ddfbc5;
+  --green2--20: #c2f799;
+  --green2--40: #9aec59;
+  --green2--60: #76de24;
+  --green2--80: #5fb918;
+  --green2--100: #49950d;
+  --green2--10: #ddfbc5;
+  --green2--20: #c2f799;
+  --green2--40: #9aec59;
+  --green2--60: #76de24;
+  --green2--80: #5fb918;
+  --green2--100: #49950d;
+
+  --yellow--10: #fce9c0;
+  --yellow--20: #fde2a1;
+  --yellow--40: #ffcc5a;
+  --yellow--60: #ffbc26;
+  --yellow--80: #ecaa18;
+  --yellow--100: #d39405;
+  --yellow--10: #fce9c0;
+  --yellow--20: #fde2a1;
+  --yellow--40: #ffcc5a;
+  --yellow--60: #ffbc26;
+  --yellow--80: #ecaa18;
+  --yellow--100: #d39405;
+
+  --orange--10: #ffecdc;
+  --orange--20: #fdd5b2;
+  --orange--40: #f9bc87;
+  --orange--60: #f9bc87;
+  --orange--80: #f18524;
+  --orange--100: #df6f0b;
+  --orange--10: #ffecdc;
+  --orange--20: #fdd5b2;
+  --orange--40: #f9bc87;
+  --orange--60: #f9bc87;
+  --orange--80: #f18524;
+  --orange--100: #df6f0b;
+
+  --red--10: #fcdbdb;
+  --red--20: #fbb4b4;
+  --red--40: #ff7878;
+  --red--60: #f14d4d;
+  --red--80: #c91616;
+  --red--10: #fcdbdb;
+  --red--20: #fbb4b4;
+  --red--40: #ff7878;
+  --red--60: #f14d4d;
+  --red--80: #c91616;
+  --red--100: #980808;
+
+  --magenta--10: #fed5f2;
+  --magenta--20: #f8b0e4;
+  --magenta--40: #f173ce;
+  --magenta--60: #e924b1;
+  --magenta--80: #c11390;
+  --magenta--100: #930c6d;
+  --magenta--10: #fed5f2;
+  --magenta--20: #f8b0e4;
+  --magenta--40: #f173ce;
+  --magenta--60: #e924b1;
+  --magenta--80: #c11390;
+  --magenta--100: #930c6d;
+
+  --lightPurple--10: #f3cefa;
+  --lightPurple--20: #e3a7ed;
+  --lightPurple--40: #d97de9;
+  --lightPurple--60: #c750db;
+  --lightPurple--80: #af20c7;
+  --lightPurple--100: #800c93;
+  --lightPurple--10: #f3cefa;
+  --lightPurple--20: #e3a7ed;
+  --lightPurple--40: #d97de9;
+  --lightPurple--60: #c750db;
+  --lightPurple--80: #af20c7;
+  --lightPurple--100: #800c93;
+
+  --background--10: #f1f2f4;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Manrope', sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Manrope', sans-serif;
+}
+
+.container {
+  margin-inline: auto;
+  width: min(90%, 70.5rem);
+}
+
+.pages {
+  width: 100vw;
+  height: 100%;
+  background-color: var(--background--10);
+}
+
+.menu-desktop {
+  display: none;
+  height: 100vh;
+}
+
+@media (min-width: 1024px) {
+  .menu-desktop {
+    display: block;
+  }
+
+  .pages {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main {
+    background-color: var(--background--10);
+    background-color: var(--background--10);
+  }
 }

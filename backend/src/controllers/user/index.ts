@@ -33,15 +33,12 @@ export const updateUserByIdInDB = async (req: Request, res: Response) => {
 
 export const registerUserToDb = async (req: Request, res: Response) => {
   try {
-    const { uid, first_name, last_name, email, photo_url, phone_number }: user = req.body;
+    const { uid, first_name, email }: user = req.body;
 
     const newUser = await db('users').insert({
       uid,
       first_name,
-      last_name,
       email,
-      photo_url,
-      phone_number,
     });
 
     res.status(StatusCodes.OK).send({ newUser });
@@ -52,7 +49,7 @@ export const registerUserToDb = async (req: Request, res: Response) => {
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
-    const users = await db('users').select('first_name', 'last_name', 'uid');
+    const users = await db('users').select('first_name', 'uid');
     res.status(StatusCodes.OK).send(users);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);

@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Dashboard, MyTask, ErrorPage } from './IndexForImport';
+import { Dashboard, MyTask, Activity, ErrorPage } from './IndexForImport';
 import LoginPage from './pages/login/Login';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import ResetPassword from './pages/resetPassword/ResetPassword';
 import SignUp from './pages/signup/Signup';
+import ProjectList from './pages/projectPage/ProjectList';
 
 const router = createBrowserRouter([
   {
@@ -14,8 +15,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: '/project',
+        element: <ProjectList />,
+      },
+      {
         path: '/mytask',
         element: <MyTask />,
+      },
+      {
+        path: '/activity',
+        element: <Activity />,
       },
     ],
   },
