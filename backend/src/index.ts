@@ -15,6 +15,7 @@ db.raw('SELECT VERSION()')
       console.warn(`⛑ ⚡️[server]: Server is running at http://localhost:${port}`);
     });
   })
+
   .catch((e) => {
     console.warn('Connection to the database is NOT successful!', e);
   });

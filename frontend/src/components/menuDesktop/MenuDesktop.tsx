@@ -11,7 +11,7 @@ export const Menu = () => {
     <>
       <div className={styles.logo_div}>
         <img className={styles.logo_menu} src='/assets/icons/mangement.png' alt='Logo' />
-        <h1 className={styles.header}>Lothbrok</h1>
+        <h2 className={styles.header}>Asana clone</h2>
       </div>
       <List className={styles.list_top}>
         {['Dashboard', 'Project', 'My Task', 'Activity'].map((text, index) => (

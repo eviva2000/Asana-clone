@@ -5,6 +5,7 @@ export const validateAuth = async (req: Request, res: Response, next: NextFuncti
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     // Validate the token
     const token = req.headers.authorization.split(' ')[1];
+    console.log(token);
     try {
       await adminFireAuth.verifyIdToken(token);
       next();

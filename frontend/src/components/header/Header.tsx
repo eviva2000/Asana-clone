@@ -64,11 +64,6 @@ const Header = () => {
       ) : null}
       <PageTitle />
 
-      <div className={styles.lothbrok}>
-        <img src={logo} width='30px' height='30px' />
-        <h1 id={styles.h1}>Lothbrok</h1>
-      </div>
-
       <div className={styles.header_right}>
         {userName && isDesktop ? (
           <>
