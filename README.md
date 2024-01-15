@@ -1,8 +1,8 @@
 ## Asana-clone
 
-This repository is organised as a monorepo, which means that it has an entry point and client and server are made as different projects. They are organised as workspaces, which gives me control over projects from this entry point.
+This repository is organized as a mono repo, which means that it has an entry point which means the client and the server are made as different projects. They are organized as workspaces, which gives me control over projects from this entry point.
 
-In order to start and install all the dependencies run:
+To start and install all the dependencies run:
 
 ```bash
 npm run init-project
