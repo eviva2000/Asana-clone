@@ -5,6 +5,9 @@ import thum2 from '../../assets/images/thum2.jpg';
 import thum3 from '../../assets/images/thum3.jpg';
 import thum4 from '../../assets/images/thum4.svg';
 import { Project } from '../../types/Project';
+import api from '../../api';
+import axios from 'axios';
+
 function ProjectList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userId, setUserId] = useState('');
@@ -16,14 +19,32 @@ function ProjectList() {
       const auth = getAuth();
       onAuthStateChanged(auth, async (user: User | null) => {
         if (user) {
-          console.log('user exists', user);
+          setUserId(user.uid);
         }
       });
     };
     setUser();
   }, []);
 
-  return <div>Projects list</div>;
+  const getProjects = async () => {
+    try {
+      if (userId) {
+        // const req = await api();
+        const res = await axios.get(`http://localhost:5000/api/project/user/${userId}`);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    getProjects();
+  }, [userId]);
+  return (
+    <div>
+      {projects && projects.map((project) => <div key={project.id}>project{project.title}</div>)}
+    </div>
+  );
 }
 
 export default ProjectList;

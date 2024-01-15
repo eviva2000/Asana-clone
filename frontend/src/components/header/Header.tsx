@@ -29,11 +29,7 @@ const Header = () => {
         const req = await api();
         const res = await req.get(`/user/${uid}`);
         const name = await res.data;
-        setUserName(
-          `${name.user[0].first_name ? name.user[0].first_name : ''} ${
-            name.user[0].last_name ? name.user[0].last_name : ''
-          }`,
-        );
+        setUserName(`${name.user[0].first_name ? name.user[0].first_name : ''}`);
       }
     } catch (e) {
       console.error(e);
