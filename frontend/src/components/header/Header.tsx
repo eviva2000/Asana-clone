@@ -7,6 +7,7 @@ import api from '../../api';
 import { Avatar, useMediaQuery } from '@mui/material';
 import MenuLeftBar from '../menuMobile/MenuLeftBar';
 import logo from '../../assets/icons/managment.png';
+import axios from 'axios';
 
 const handleSignOut = () => signOut(getAuth());
 const Header = () => {
@@ -26,8 +27,7 @@ const Header = () => {
   const fetchAndSetUserName = async () => {
     try {
       if (uid) {
-        const req = await api();
-        const res = await req.get(`/user/${uid}`);
+        const res = await axios.get(`http://localhost:5000/api/user/${uid}`);
         const name = await res.data;
         setUserName(`${name.user[0].first_name ? name.user[0].first_name : ''}`);
       }

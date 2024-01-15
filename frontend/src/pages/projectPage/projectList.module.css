@@ -1,0 +1,35 @@
+.right_align {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.project_list_container {
+  font-family: 'Manrope';
+  text-align: right;
+  padding-right: 20px;
+}
+
+.task_list {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.create_project {
+  border: none;
+  cursor: pointer;
+  display: fixed;
+  background-color: #d8e0e8;
+  border-radius: 8px;
+  border: none;
+  color: #110d59;
+  padding: 10px 25px 10px 25px;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+  .task_list {
+    justify-content: center;
+  }
+}
