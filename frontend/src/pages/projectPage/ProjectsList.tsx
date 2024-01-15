@@ -8,6 +8,7 @@ import { Project } from '../../types/Project';
 import api from '../../api';
 import axios from 'axios';
 import styles from './projectList.module.css';
+import ProjectsItems from './ProjectsItems';
 
 function ProjectList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,7 +61,7 @@ function ProjectList() {
           Create Project
         </button>
       </div>
-      {projects && projects.map((project) => <div key={project.id}>Project {project.title}</div>)}
+      {projects ? <ProjectsItems projects={projects} /> : <div>Loading...</div>}
     </div>
   );
 }

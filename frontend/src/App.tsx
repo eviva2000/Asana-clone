@@ -6,7 +6,7 @@ import LoginPage from './pages/login/Login';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import ResetPassword from './pages/resetPassword/ResetPassword';
 import SignUp from './pages/signup/Signup';
-import ProjectList from './pages/projectPage/ProjectList';
+import ProjectList from './pages/projectPage/ProjectsList';
 
 const router = createBrowserRouter([
   {

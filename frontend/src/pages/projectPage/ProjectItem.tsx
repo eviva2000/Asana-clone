@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TaskItem.module.css';
+import styles from './projectItem.module.css';
 import Calendar from '../../assets/icons/calendar.png';
 import Assigned from '../../assets/icons/assigned.png';
 import Circle from '../../assets/icons/checked.png';
