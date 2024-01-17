@@ -4,6 +4,7 @@ import Close from '../../assets/icons/x.png';
 import api from '../../api';
 import { Autocomplete, TextField } from '@mui/material';
 import { User } from '../../types/user';
+import axios from 'axios';
 
 interface ProjectModalProps {
   closeModal: () => void;
@@ -20,8 +21,7 @@ function ProjectModal({ closeModal, handleCreateProject, thumbnail, userUid }: P
   useEffect(() => {
     const fetchAndSetUsers = async () => {
       try {
-        const req = await api();
-        const res = await req.get('/user');
+        const res = await axios.get('http://localhost:5000/api/user');
         const users = await res.data;
         setUsers(users);
         setSelectedUsers([users.find((user: User) => user.uid === userUid)]);
@@ -71,9 +71,7 @@ function ProjectModal({ closeModal, handleCreateProject, thumbnail, userUid }: P
                 options={users}
                 value={selectedUsers}
                 defaultValue={selectedUsers}
-                getOptionLabel={(option) =>
-                  option ? `${option.first_name} ${option.last_name}` : ''
-                }
+                getOptionLabel={(option) => (option ? `${option.first_name}` : '')}
                 onChange={(e, addedUser) => {
                   setSelectedUsers(addedUser);
                 }}

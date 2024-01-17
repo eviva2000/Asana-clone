@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase_config';
 import { AuthErrorCodes } from 'firebase/auth';
-import api from '../../api';
+import axios from 'axios';
 
 interface FormData {
   first_name: string;
@@ -23,7 +23,6 @@ const SignUp = () => {
   const { isDirty, isValid } = formState;
 
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [editingPass, setEditingPass] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -31,11 +30,9 @@ const SignUp = () => {
     e?.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
-      const response = await api();
       try {
-        console.log('first');
         if (auth.currentUser) {
-          await response.post('/user', {
+          await axios.post('http://localhost:5000/api/user', {
             uid: auth.currentUser.uid,
             first_name: data.first_name,
             email: data.email,

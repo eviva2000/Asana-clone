@@ -3,7 +3,6 @@ import PageTitle from '../pageTitle/PageTitle';
 import { User, getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
-import api from '../../api';
 import { Avatar, useMediaQuery } from '@mui/material';
 import MenuLeftBar from '../menuMobile/MenuLeftBar';
 import logo from '../../assets/icons/managment.png';

@@ -69,9 +69,9 @@ function ProjectList() {
         thumbnail_link: thumbnails[projects ? projects.length % thumbnails.length : 0],
         uids: invitedUserUids,
       };
+      console.log(project);
       try {
-        const req = await api();
-        const res = await req.post(`/project`, project);
+        const res = await axios.post(`http://localhost:5000/api/project`, project);
         const newProject = res.data;
         if (projects) {
           setProjects([...projects, newProject]);
