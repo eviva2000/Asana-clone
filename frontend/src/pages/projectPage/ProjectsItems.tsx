@@ -1,13 +1,13 @@
 import React from 'react';
 import ProjectItem from './ProjectItem';
 import styles from './projectList.module.css';
-import { Project } from '../../types/Project';
+import { Project } from '../../types/project';
 
 interface TaskListProps {
   projects: Project[];
 }
 
-function TaskList({ projects }: TaskListProps) {
+function ProjectsItems({ projects }: TaskListProps) {
   return (
     <div className={styles.task_list}>
       {projects.map((project) => (
@@ -17,4 +17,4 @@ function TaskList({ projects }: TaskListProps) {
   );
 }
 
-export default TaskList;
+export default ProjectsItems;

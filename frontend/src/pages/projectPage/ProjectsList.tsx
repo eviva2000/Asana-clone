@@ -4,7 +4,7 @@ import thum1 from '../../assets/images/thum1.jpg';
 import thum2 from '../../assets/images/thum2.jpg';
 import thum3 from '../../assets/images/thum3.jpg';
 import thum4 from '../../assets/images/thum4.svg';
-import { Project } from '../../types/Project';
+import { Project } from '../../types/project';
 import api from '../../api';
 import axios from 'axios';
 import styles from './projectList.module.css';

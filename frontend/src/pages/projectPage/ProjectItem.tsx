@@ -3,7 +3,7 @@ import styles from './projectItem.module.css';
 import Calendar from '../../assets/icons/calendar.png';
 import Assigned from '../../assets/icons/assigned.png';
 import Circle from '../../assets/icons/checked.png';
-import { Project } from '../../types/Project';
+import { Project } from '../../types/project';
 import { useNavigate } from 'react-router-dom';
 
 interface TaskItemProps {
