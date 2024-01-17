@@ -7,6 +7,7 @@ import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import ResetPassword from './pages/resetPassword/ResetPassword';
 import SignUp from './pages/signup/Signup';
 import ProjectList from './pages/projectPage/ProjectsList';
+import ProjectView from './pages/projectView/ProjectView';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
         path: '/project',
         element: <ProjectList />,
       },
+      { path: '/project/:id', element: <ProjectView /> },
       {
         path: '/mytask',
         element: <MyTask />,

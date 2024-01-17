@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import { User, getAuth, onAuthStateChanged } from '@firebase/auth';
 import styles from './projectView.module.css';
-import thumbnail from '../../assets/images/Rectangle 3025.svg';
+import thumbnail from '../../assets/images/thum4.svg';
 import { Task } from '../../types/task';
 import { Project } from '../../types/project';
 import { Categories } from '../../types/categories';
@@ -44,8 +45,7 @@ const ProjectView = () => {
 
   const checkIfUserHasAccess = async () => {
     try {
-      const req = await api();
-      const res = await req.get(`project/${project_id}/users`);
+      const res = await axios.get(`http://localhost:5000/api/project/${project_id}/users`);
       const fetchedUsers: { project_id: number; user_uid: string }[] = await res.data;
       const users = fetchedUsers.map((user) => user.user_uid);
       setProjectMembers(users);
@@ -62,7 +62,7 @@ const ProjectView = () => {
     try {
       if (userHasAccess) {
         const req = await api();
-        const res = await req.get(`project/tasks/${project_id}`);
+        const res = await axios.get(`http://localhost:5000/api/project/tasks/${project_id}`);
         const tasks = await res.data;
         setTasks(tasks);
         setIsLoading(false);
@@ -74,8 +74,7 @@ const ProjectView = () => {
 
   const getProject = async () => {
     try {
-      const req = await api();
-      const res = await req.get(`/project/${project_id}`);
+      const res = await axios.get(`http://localhost:5000/api/project/${project_id}`);
       const project = await res.data;
       setProject(project);
       setProjectTitle(project.title);
