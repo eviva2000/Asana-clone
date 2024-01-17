@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
+import axios from 'axios';
 import thum1 from '../../assets/images/thum1.jpg';
 import thum2 from '../../assets/images/thum2.jpg';
 import thum3 from '../../assets/images/thum3.jpg';
 import thum4 from '../../assets/images/thum4.svg';
 import { Project } from '../../types/project';
+import Modal from '../../components/modal/Modal';
 import api from '../../api';
-import axios from 'axios';
 import styles from './projectList.module.css';
 import ProjectsItems from './ProjectsItems';
-
+import { User as UserType } from '../../types/user';
 function ProjectList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userId, setUserId] = useState('');
   const [projects, setProjects] = useState<Project[]>();
   const thumbnails = [thum1, thum2, thum3, thum4];
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
 
   useEffect(() => {
     const setUser = () => {
@@ -54,6 +51,40 @@ function ProjectList() {
     getProjects();
   }, [userId]);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCreateProject = async (projectName: string, team: UserType[]) => {
+    if (projectName.trim()) {
+      const invitedUserUids = team.map((user) => user.uid);
+      const project = {
+        title: projectName,
+        date_of_creation: new Date().toISOString().split('T')[0],
+        user_uid: userId,
+        thumbnail_link: thumbnails[projects ? projects.length % thumbnails.length : 0],
+        uids: invitedUserUids,
+      };
+      try {
+        const req = await api();
+        const res = await req.post(`/project`, project);
+        const newProject = res.data;
+        if (projects) {
+          setProjects([...projects, newProject]);
+        } else {
+          setProjects(newProject);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    closeModal();
+  };
+
   return (
     <div className={styles.project_list_container}>
       <div className={styles.right_align}>
@@ -61,7 +92,21 @@ function ProjectList() {
           Create Project
         </button>
       </div>
-      {projects ? <ProjectsItems projects={projects} /> : <div>Loading...</div>}
+      {projects ? (
+        <>
+          <ProjectsItems projects={projects} />
+          {isModalOpen && (
+            <Modal
+              handleCreateProject={handleCreateProject}
+              closeModal={closeModal}
+              thumbnail={thumbnails[projects ? projects.length % thumbnails.length : 0]}
+              userUid={userId}
+            />
+          )}
+        </>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 }
