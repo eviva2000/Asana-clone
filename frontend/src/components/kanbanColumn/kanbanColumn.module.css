@@ -1,0 +1,58 @@
+.kanban_task {
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.kanban_task_row {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  align-items: center;
+}
+
+.kanban_title {
+  display: block;
+  position: inherit;
+}
+
+.kanban_title.completed_task {
+  color: #b3b1bb;
+  text-decoration: line-through;
+}
+
+.droppable {
+  min-height: 60vh;
+}
+
+.priority {
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.easy {
+  color: #03b586;
+  background-color: rgba(3, 181, 134, 0.1);
+}
+
+.hard {
+  color: #f14d4d;
+  background-color: rgba(241, 77, 77, 0.1);
+}
+
+.medium {
+  color: #fd8a24;
+  background-color: rgba(253, 138, 36, 0.1);
+}
+
+.description {
+  padding: 1rem 0;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+}
