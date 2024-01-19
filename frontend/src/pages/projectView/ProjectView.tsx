@@ -8,11 +8,12 @@ import { Task } from '../../types/task';
 import { Project } from '../../types/project';
 import { Categories } from '../../types/categories';
 import api from '../../api';
-import { Task as TaskConstructor } from '../../classes/Task';
 import { AddCircle } from '@mui/icons-material';
 import { Avatar, AvatarGroup, CircularProgress, Tooltip } from '@mui/material';
 import { useProjectStore } from '../../store/task.store';
-
+import KanbanView from '../../components/kanbanView/KanbanView';
+import { ViewProps } from '../../types/viewProps';
+import AddingUsersModal from '../../components/addinguserModal/Modal';
 const ProjectView = () => {
   const { id: project_id } = useParams();
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -20,11 +21,10 @@ const ProjectView = () => {
   const [view, setView] = useState<string>('kanban');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [title, setTitle] = useState<string>('');
-  const [editing, setEditing] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
   const [hasAccess, setHasAccess] = useState<boolean>(false);
-  const [addUsers, setAddUsers] = useState<boolean>(false);
   const [projectMembers, setProjectMembers] = useState<string[]>();
+  const [addUsers, setAddUsers] = useState<boolean>(false);
   const [projectMemberUsernames, setProjectMemberUsernames] = useState<string[]>();
   const { setProjectTitle } = useProjectStore();
   const [allAssignees, setAllassignees] =
@@ -86,10 +86,11 @@ const ProjectView = () => {
   const getProjectMemberNames = async () => {
     try {
       if (projectMembers) {
-        const req = await api();
-        const res = await req.post('/user/names', { uids: projectMembers });
+        const res = await axios.post('http://localhost:5000/api/user/names', {
+          uids: projectMembers,
+        });
         const data: { first_name: string; last_name: string }[] = res.data;
-        const usernames = data.map((user) => `${user.first_name} ${user.last_name}`);
+        const usernames = data.map((user) => `${user.first_name}`);
         setProjectMemberUsernames(usernames);
         setAllassignees(res.data);
       }
@@ -123,9 +124,13 @@ const ProjectView = () => {
     setView(view);
   };
 
-  const editTitle = (status: string) => {
-    setEditing(status);
-    setTitle('');
+  const viewProps: ViewProps = {
+    tasks,
+    setTasks,
+    title,
+    setTitle,
+    categories,
+    allAssignees,
   };
 
   return !isLoading ? (
@@ -161,6 +166,15 @@ const ProjectView = () => {
                   style={{ color: '#110D59', cursor: 'pointer', width: '2.5rem', height: '2.5rem' }}
                   onClick={() => setAddUsers(true)}
                 />
+                {addUsers ? (
+                  <AddingUsersModal
+                    projectMembers={projectMembers}
+                    setProjectMembers={setProjectMembers}
+                    addUsers={addUsers}
+                    setAddUsers={setAddUsers}
+                    projectId={project_id}
+                  />
+                ) : null}
               </div>
             </div>
           </div>
@@ -177,6 +191,11 @@ const ProjectView = () => {
             >
               List
             </span>
+          </div>
+        </div>
+        <div className={styles.project_views}>
+          <div className={styles.list_wrapper}>
+            {view === 'kanban' ? <KanbanView {...viewProps} /> : <h3>List view</h3>}
           </div>
         </div>
       </div>

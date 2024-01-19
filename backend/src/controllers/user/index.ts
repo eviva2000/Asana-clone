@@ -6,7 +6,6 @@ export const getUserById = async (req: Request, res: Response) => {
   try {
     const uid = req.params.uid;
     const user = await db('users').where({ uid });
-    console.log(user);
     res.status(StatusCodes.OK).send({ user });
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);
@@ -50,6 +49,16 @@ export const registerUserToDb = async (req: Request, res: Response) => {
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await db('users').select('first_name', 'uid');
+    res.status(StatusCodes.OK).send(users);
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);
+  }
+};
+
+export const getUserNamesByUids = async (req: Request, res: Response) => {
+  const { uids } = req.body;
+  try {
+    const users = await db('users').select('first_name', 'uid').whereIn('uid', uids);
     res.status(StatusCodes.OK).send(users);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);

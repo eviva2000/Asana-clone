@@ -6,6 +6,7 @@ import {
   getProjectsOfUser,
   getAmountOfTasks,
   getUsersOfProject,
+  inviteUsersToProject,
 } from '../../controllers/projects';
 
 const projects: Router = express.Router();
@@ -16,5 +17,6 @@ projects.post('/', createProjectAndInviteUsers);
 projects.get('/user/:user_uid', getProjectsOfUser);
 projects.get('/:project_id/tasks/count', getAmountOfTasks);
 projects.get('/:project_id/users', getUsersOfProject);
+projects.post('/:project_id/invite-users', inviteUsersToProject);
 
 export default projects;

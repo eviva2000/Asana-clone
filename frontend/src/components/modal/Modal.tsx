@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './modal.module.css';
 import Close from '../../assets/icons/x.png';
-import api from '../../api';
 import { Autocomplete, TextField } from '@mui/material';
 import { User } from '../../types/user';
 import axios from 'axios';

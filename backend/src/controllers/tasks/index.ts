@@ -28,3 +28,26 @@ export const getTasksForProjectAndUser = async (req: Request, res: Response) => 
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);
   }
 };
+
+export const addNewTask = async (req: Request, res: Response) => {
+  try {
+    const { title, description, status, due_date, user_uid, completed, priority, project_id } =
+      req.body;
+
+    const task = await db('tasks')
+      .insert({
+        title,
+        description,
+        status,
+        due_date,
+        user_uid,
+        completed,
+        priority,
+        project_id,
+      })
+      .returning('*');
+    res.status(StatusCodes.CREATED).json(task);
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(error);
+  }
+};
