@@ -14,6 +14,8 @@ import { useProjectStore } from '../../store/task.store';
 import KanbanView from '../../components/kanbanView/KanbanView';
 import { ViewProps } from '../../types/viewProps';
 import AddingUsersModal from '../../components/addinguserModal/Modal';
+import { Task as TaskConstructor } from '../../classes/Task';
+
 const ProjectView = () => {
   const { id: project_id } = useParams();
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -21,21 +23,21 @@ const ProjectView = () => {
   const [view, setView] = useState<string>('kanban');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [title, setTitle] = useState<string>('');
+  const [editing, setEditing] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
   const [hasAccess, setHasAccess] = useState<boolean>(false);
-  const [projectMembers, setProjectMembers] = useState<string[]>();
   const [addUsers, setAddUsers] = useState<boolean>(false);
+  const [projectMembers, setProjectMembers] = useState<string[]>();
   const [projectMemberUsernames, setProjectMemberUsernames] = useState<string[]>();
-  const { setProjectTitle } = useProjectStore();
   const [allAssignees, setAllassignees] =
     useState<{ first_name: string; last_name: string; uid: string }[]>();
+  const { setProjectTitle } = useProjectStore();
   const categories: Categories = {
     Documentation: 'documentation',
     Ongoing: 'ongoing',
     Todo: 'to_do',
     Done: 'done',
   };
-
   const getUserInitials = (name: string) => {
     return name
       .split(' ')
@@ -124,11 +126,37 @@ const ProjectView = () => {
     setView(view);
   };
 
+  const addNewTask = async (status: string) => {
+    if (project_id && title.trim()) {
+      const task = new TaskConstructor();
+      task.title = title;
+      task.status = status;
+      task.user_uid = userId;
+      task.project_id = +project_id;
+      try {
+        const res = await axios.post(`http://localhost:5000/api/project/tasks`, task);
+        const newTask = res.data[0];
+        console.log(newTask);
+        setTasks([...tasks, newTask]);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  };
+  const editTitle = (status: string) => {
+    setEditing(status);
+    setTitle('');
+  };
+
   const viewProps: ViewProps = {
     tasks,
     setTasks,
     title,
     setTitle,
+    editing,
+    setEditing,
+    addNewTask,
+    editTitle,
     categories,
     allAssignees,
   };
