@@ -1,0 +1,26 @@
+.kanban {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow: auto;
+}
+
+.column {
+  width: 250px;
+  min-width: 200px;
+}
+
+.section_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section_title > h4 {
+  color: #2b283d;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

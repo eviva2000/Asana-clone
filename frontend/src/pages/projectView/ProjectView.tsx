@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import { User, getAuth, onAuthStateChanged } from '@firebase/auth';
 import styles from './projectView.module.css';
 import thumbnail from '../../assets/images/thum4.svg';
+import { useProjectStore } from '../../store/task.store';
+import ProjectKanbanView from '../../components/kanbanView/KanbanView';
 import { Task } from '../../types/task';
 import { Project } from '../../types/project';
 import { Categories } from '../../types/categories';
-import api from '../../api';
-import { AddCircle } from '@mui/icons-material';
-import { Avatar, AvatarGroup, CircularProgress, Tooltip } from '@mui/material';
-import { useProjectStore } from '../../store/task.store';
-import KanbanView from '../../components/kanbanView/KanbanView';
 import { ViewProps } from '../../types/viewProps';
-import AddingUsersModal from '../../components/addinguserModal/Modal';
+import axios from 'axios';
+import api from '../../api';
 import { Task as TaskConstructor } from '../../classes/Task';
+import { AddCircle } from '@mui/icons-material';
+import AddUsersDialog from '../../components/addinguserModal/Modal';
+import { Avatar, AvatarGroup, CircularProgress, Tooltip } from '@mui/material';
 
 const ProjectView = () => {
   const { id: project_id } = useParams();
@@ -29,8 +29,7 @@ const ProjectView = () => {
   const [addUsers, setAddUsers] = useState<boolean>(false);
   const [projectMembers, setProjectMembers] = useState<string[]>();
   const [projectMemberUsernames, setProjectMemberUsernames] = useState<string[]>();
-  const [allAssignees, setAllassignees] =
-    useState<{ first_name: string; last_name: string; uid: string }[]>();
+  const [allAssignees, setAllassignees] = useState<{ first_name: string; uid: string }[]>();
   const { setProjectTitle } = useProjectStore();
   const categories: Categories = {
     Documentation: 'documentation',
@@ -38,6 +37,7 @@ const ProjectView = () => {
     Todo: 'to_do',
     Done: 'done',
   };
+
   const getUserInitials = (name: string) => {
     return name
       .split(' ')
@@ -47,6 +47,7 @@ const ProjectView = () => {
 
   const checkIfUserHasAccess = async () => {
     try {
+      const req = await api();
       const res = await axios.get(`http://localhost:5000/api/project/${project_id}/users`);
       const fetchedUsers: { project_id: number; user_uid: string }[] = await res.data;
       const users = fetchedUsers.map((user) => user.user_uid);
@@ -66,6 +67,7 @@ const ProjectView = () => {
         const req = await api();
         const res = await axios.get(`http://localhost:5000/api/project/tasks/${project_id}`);
         const tasks = await res.data;
+        console.log('tasks from getTasks', res.data);
         setTasks(tasks);
         setIsLoading(false);
       }
@@ -76,6 +78,7 @@ const ProjectView = () => {
 
   const getProject = async () => {
     try {
+      const req = await api();
       const res = await axios.get(`http://localhost:5000/api/project/${project_id}`);
       const project = await res.data;
       setProject(project);
@@ -88,10 +91,11 @@ const ProjectView = () => {
   const getProjectMemberNames = async () => {
     try {
       if (projectMembers) {
+        const req = await api();
         const res = await axios.post('http://localhost:5000/api/user/names', {
           uids: projectMembers,
         });
-        const data: { first_name: string; last_name: string }[] = res.data;
+        const data: { first_name: string }[] = res.data;
         const usernames = data.map((user) => `${user.first_name}`);
         setProjectMemberUsernames(usernames);
         setAllassignees(res.data);
@@ -136,13 +140,51 @@ const ProjectView = () => {
       try {
         const res = await axios.post(`http://localhost:5000/api/project/tasks`, task);
         const newTask = res.data[0];
-        console.log(newTask);
         setTasks([...tasks, newTask]);
       } catch (e) {
         console.error(e);
       }
     }
   };
+
+  const onDragEnd = (result: any) => {
+    const { source, destination } = result;
+    if (!destination) return;
+    if (source.droppableId !== destination.droppableId) {
+      const allTasks = [...tasks];
+      const [removed] = allTasks.splice(source.index, 1);
+      let newIndex = destination.index;
+      if (destination.index > source.index) {
+        newIndex--;
+      }
+      allTasks.splice(newIndex, 0, removed);
+      setTasks(
+        allTasks.map((task) =>
+          String(task.id) === result.draggableId
+            ? { ...task, status: destination.droppableId }
+            : task,
+        ),
+      );
+      allTasks.map(async (task) => {
+        if (String(task.id) === result.draggableId) {
+          try {
+            const req = await api();
+            await req.put(`/project/tasks/${task.id}`, { status: destination.droppableId });
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      });
+    } else {
+      setTasks((tasks) => {
+        const allTasks = [...tasks];
+        const [removed] = allTasks.splice(source.index, 1);
+        allTasks.splice(destination.index, 0, removed);
+        return allTasks;
+      });
+    }
+  };
+
   const editTitle = (status: string) => {
     setEditing(status);
     setTitle('');
@@ -156,6 +198,7 @@ const ProjectView = () => {
     editing,
     setEditing,
     addNewTask,
+    onDragEnd,
     editTitle,
     categories,
     allAssignees,
@@ -195,7 +238,7 @@ const ProjectView = () => {
                   onClick={() => setAddUsers(true)}
                 />
                 {addUsers ? (
-                  <AddingUsersModal
+                  <AddUsersDialog
                     projectMembers={projectMembers}
                     setProjectMembers={setProjectMembers}
                     addUsers={addUsers}
@@ -223,7 +266,7 @@ const ProjectView = () => {
         </div>
         <div className={styles.project_views}>
           <div className={styles.list_wrapper}>
-            {view === 'kanban' ? <KanbanView {...viewProps} /> : <h3>List view</h3>}
+            {view === 'kanban' ? <ProjectKanbanView {...viewProps} /> : <h3>List view</h3>}
           </div>
         </div>
       </div>

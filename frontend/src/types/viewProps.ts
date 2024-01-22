@@ -11,5 +11,6 @@ export type ViewProps = {
   addNewTask: (status: string) => void;
   editTitle: (status: string) => void;
   categories: Categories;
-  allAssignees: { first_name: string; last_name: string; uid: string }[] | undefined;
+  allAssignees: { first_name: string; uid: string }[] | undefined;
+  onDragEnd: (result: any) => void;
 };
