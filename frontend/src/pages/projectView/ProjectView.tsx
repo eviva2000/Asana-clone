@@ -4,7 +4,8 @@ import { User, getAuth, onAuthStateChanged } from '@firebase/auth';
 import styles from './projectView.module.css';
 import thumbnail from '../../assets/images/thum4.svg';
 import { useProjectStore } from '../../store/task.store';
-import ProjectKanbanView from '../../components/kanbanView/KanbanView';
+import KanbanView from '../../components/kanbanView/KanbanView';
+import ListView from '../../components/listView/ListView';
 import { Task } from '../../types/task';
 import { Project } from '../../types/project';
 import { Categories } from '../../types/categories';
@@ -266,7 +267,7 @@ const ProjectView = () => {
         </div>
         <div className={styles.project_views}>
           <div className={styles.list_wrapper}>
-            {view === 'kanban' ? <ProjectKanbanView {...viewProps} /> : <h3>List view</h3>}
+            {view === 'kanban' ? <KanbanView {...viewProps} /> : <ListView {...viewProps} />}
           </div>
         </div>
       </div>

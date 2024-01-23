@@ -1,0 +1,54 @@
+.grid_container {
+  display: grid;
+  grid-template-columns: 1fr 8rem 8rem 8rem;
+  background-color: #fff;
+}
+
+.border_radius {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.grid_item {
+  padding: 0.5rem;
+  padding-right: 1rem;
+  border-bottom: 1px solid #f1f2f4;
+  display: flex;
+  align-items: center;
+}
+
+.first_row {
+  background-color: #fbfbfb;
+  font-size: 0.75rem;
+  color: #7d7a89;
+}
+
+.task_row {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.completed_task {
+  color: #b3b1bb;
+  text-decoration: line-through;
+}
+
+.task_row:hover {
+  background-color: #f2f1ff;
+}
+
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.droppable {
+  min-height: 1rem;
+}
+
+@media only screen and (max-width: 550px) {
+  .grid_container {
+    grid-template-columns: 1fr 5rem 5rem;
+  }
+}
