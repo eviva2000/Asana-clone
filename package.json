@@ -1,10 +1,10 @@
 {
-  "name": "final-project_tpl",
+  "name": "asana-project_tpl",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "private": true,
-  "author": "Yurii Pakhariev",
+  "author": "Elaheh",
   "license": "ISC",
   "workspaces": [
     "frontend",
