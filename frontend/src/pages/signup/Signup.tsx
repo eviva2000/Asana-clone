@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import styles from './signup.module.css';
 import { Alert, AlertTitle } from '@mui/material';
 import logo from '../../assets/icons/managment.png';
 import image from '../../assets/images/Hands Show.svg';
@@ -9,6 +8,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase_config';
 import { AuthErrorCodes } from 'firebase/auth';
 import axios from 'axios';
+import styles from './Signup.module.css';
 
 interface FormData {
   first_name: string;
