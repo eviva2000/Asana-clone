@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import styles from './signup.module.css';
-import { Button, TextField, InputLabel, Checkbox, Alert, AlertTitle } from '@mui/material';
+import { Alert, AlertTitle } from '@mui/material';
 import logo from '../../assets/icons/managment.png';
 import image from '../../assets/images/Hands Show.svg';
 import { useNavigate } from 'react-router';
