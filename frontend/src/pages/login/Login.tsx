@@ -3,7 +3,7 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { TextField, Button, Checkbox, Typography, Alert, AlertTitle } from '@mui/material';
 import logo from '../../assets/icons/managment.png';
 import image from '../../assets/images/Stuck at Home Imagination.jpg';
-import styles from './login.module.css';
+import styles from './Login.module.css';
 
 import {
   getAuth,

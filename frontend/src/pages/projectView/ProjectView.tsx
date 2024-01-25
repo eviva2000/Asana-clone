@@ -48,7 +48,6 @@ const ProjectView = () => {
 
   const checkIfUserHasAccess = async () => {
     try {
-      const req = await api();
       const res = await axios.get(`http://localhost:5000/api/project/${project_id}/users`);
       const fetchedUsers: { project_id: number; user_uid: string }[] = await res.data;
       const users = fetchedUsers.map((user) => user.user_uid);
@@ -65,10 +64,8 @@ const ProjectView = () => {
     const userHasAccess = await checkIfUserHasAccess();
     try {
       if (userHasAccess) {
-        const req = await api();
         const res = await axios.get(`http://localhost:5000/api/project/tasks/${project_id}`);
         const tasks = await res.data;
-        console.log('tasks from getTasks', res.data);
         setTasks(tasks);
         setIsLoading(false);
       }
@@ -79,7 +76,6 @@ const ProjectView = () => {
 
   const getProject = async () => {
     try {
-      const req = await api();
       const res = await axios.get(`http://localhost:5000/api/project/${project_id}`);
       const project = await res.data;
       setProject(project);
@@ -92,7 +88,6 @@ const ProjectView = () => {
   const getProjectMemberNames = async () => {
     try {
       if (projectMembers) {
-        const req = await api();
         const res = await axios.post('http://localhost:5000/api/user/names', {
           uids: projectMembers,
         });
