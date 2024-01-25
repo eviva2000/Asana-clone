@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import styles from './signup.module.css';
 import { Alert, AlertTitle } from '@mui/material';
@@ -20,7 +20,7 @@ interface FormData {
 const SignUp = () => {
   const { register, formState, handleSubmit } = useForm<FormData>();
 
-  const { isDirty, isValid } = formState;
+  const { isValid } = formState;
 
   const [errorMessage, setErrorMessage] = useState<string>('');
 
