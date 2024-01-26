@@ -8,7 +8,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase_config';
 import { AuthErrorCodes } from 'firebase/auth';
 import axios from 'axios';
-import styles from './Signup.module.css';
+import styles from './signUp.module.css';
 
 interface FormData {
   first_name: string;
