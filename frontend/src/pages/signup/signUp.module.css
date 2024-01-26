@@ -83,7 +83,7 @@ form {
 
 .row {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .small {
@@ -121,6 +121,6 @@ form {
     padding: 0 4rem;
   }
   .form {
-    margin-left: 0;
+    margin-left: '0';
   }
 }
