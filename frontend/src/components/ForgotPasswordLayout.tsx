@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from '../pages/forgotPassword/forgotPassword.module.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import logo from '../assets/icons/managment.png';
-import image from '../assets/images/Stuck at Home Sitting On Floor.svg';
 import { useNavigate } from 'react-router-dom';
 
 function ForgotPasswordLayout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
-
+  const logo = '/assets/icons/managment.png';
+  const image = '/assets/images/forgetpass.svg';
   return (
     <div className={styles.forgot_pass}>
       <div className={styles.icon}>

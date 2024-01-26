@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ForgotPasswordLayout from '../../components/ForgotPasswordLayout';
 import { Button, TextField, InputLabel } from '@mui/material';
 import { useNavigate } from 'react-router-dom';

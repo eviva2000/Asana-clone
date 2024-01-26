@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './modal.module.css';
-import Close from '../../assets/icons/x.png';
 import { Autocomplete, TextField } from '@mui/material';
 import { User } from '../../types/user';
 import axios from 'axios';
@@ -37,7 +36,7 @@ function ProjectModal({ closeModal, handleCreateProject, thumbnail, userUid }: P
         <div className={styles.flex_row}>
           <h2>New Project</h2>
           <button className={styles.close_button} onClick={closeModal}>
-            <img src={Close} alt='Close' className={styles.close_icon} />
+            <img src='/assets/icons/x.png' alt='Close' className={styles.close_icon} />
           </button>
         </div>
         <div className={styles.left_content}>

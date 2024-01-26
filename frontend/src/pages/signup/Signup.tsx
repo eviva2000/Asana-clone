@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Alert, AlertTitle } from '@mui/material';
-import logo from '../../assets/icons/managment.png';
-import image from '../../assets/images/Hands Show.svg';
 import { useNavigate } from 'react-router';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase_config';
@@ -19,13 +17,11 @@ interface FormData {
 
 const SignUp = () => {
   const { register, formState, handleSubmit } = useForm<FormData>();
-
   const { isValid } = formState;
-
   const [errorMessage, setErrorMessage] = useState<string>('');
-
   const navigate = useNavigate();
-
+  const logo = '/assets/icons/managment.png';
+  const image = '/assets/images/intro.svg';
   const onSubmit: SubmitHandler<FormData> = async (data, e) => {
     e?.preventDefault();
     try {

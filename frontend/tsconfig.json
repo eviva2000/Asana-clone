@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "target": "es5",
     "outDir": "../browser-ui",
     "lib": ["dom", "dom.iterable", "esnext"],

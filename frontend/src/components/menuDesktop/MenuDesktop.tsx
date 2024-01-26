@@ -2,7 +2,7 @@ import { List, ListItem, ListItemIcon, ListItemButton } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './MenuDesktop.module.css';
 
-const icons = ['dashboard', 'project', 'mytask', 'activity', 'superboard'];
+const icons = ['dashboard', 'project', 'checkmark', 'activity', 'superboard'];
 
 export const Menu = () => {
   const location = useLocation();
@@ -10,7 +10,7 @@ export const Menu = () => {
   return (
     <>
       <div className={styles.logo_div}>
-        <img className={styles.logo_menu} src='/assets/icons/mangement.png' alt='Logo' />
+        <img className={styles.logo_menu} src='/assets/icons/managment.png' alt='Logo' />
         <h2 className={styles.header}>Asana clone</h2>
       </div>
       <List className={styles.list_top}>

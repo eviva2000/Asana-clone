@@ -1,4 +1,3 @@
-import React from 'react';
 import ProjectItem from './project_item/ProjectItem';
 import styles from './projectList.module.css';
 import { Project } from '../../types/project';

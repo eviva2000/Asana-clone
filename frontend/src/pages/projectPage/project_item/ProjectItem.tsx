@@ -1,7 +1,5 @@
 import styles from './projectItem.module.css';
-import Assigned from 'assets/icons/assigned.png';
-import Circle from 'assets/icons/checked.png';
-import { Project } from 'types/project';
+import { Project } from '../../../types/project';
 import { useNavigate } from 'react-router-dom';
 
 interface TaskItemProps {
@@ -14,6 +12,8 @@ function TaskItem({ project }: TaskItemProps) {
   const navigate = useNavigate();
 
   const calendarIcon = '/assets/icons/calendar.png';
+  const assignedIcon = '/assets/icons/assigned.png';
+  const checkmarkIcon = '/assets/icons/checkmark.svg';
   const completedPercentage =
     amount_of_completed_tasks && amount_of_tasks && +amount_of_completed_tasks
       ? ((amount_of_completed_tasks / amount_of_tasks) * 100).toFixed(0)
@@ -38,10 +38,10 @@ function TaskItem({ project }: TaskItemProps) {
                 .replace(`/`, '.')}
             </p>
             <p>
-              <img src={Assigned} alt='assigned-task' /> {amount_of_tasks}
+              <img src={assignedIcon} alt='assigned-task' /> {amount_of_tasks}
             </p>
             <p>
-              <img src={Circle} alt='Circle' /> {amount_of_completed_tasks}
+              <img src={checkmarkIcon} alt='checkmark' /> {amount_of_completed_tasks}
             </p>
           </div>
         </div>

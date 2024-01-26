@@ -1,4 +1,3 @@
-import React from 'react';
 import style from './PageTitle.module.css';
 import { useLocation } from 'react-router-dom';
 

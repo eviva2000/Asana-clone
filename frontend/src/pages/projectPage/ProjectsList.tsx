@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
 import axios from 'axios';
-import thum1 from '../../assets/images/thum1.jpg';
-import thum2 from '../../assets/images/thum2.jpg';
-import thum3 from '../../assets/images/thum3.jpg';
-import thum4 from '../../assets/images/thum4.svg';
 import { Project } from '../../types/project';
 import Modal from '../../components/modal/Modal';
 import styles from './projectList.module.css';
@@ -14,7 +10,11 @@ function ProjectList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userId, setUserId] = useState('');
   const [projects, setProjects] = useState<Project[]>();
-  const thumbnails = [thum1, thum2, thum3, thum4];
+  const thumb1 = '/assets/images/thum1.jpg';
+  const thumb2 = '/assets/images/thum2.jpg';
+  const thumb3 = '/assets/images/thum3.jpg';
+  const thumb4 = '/assets/images/thum4.svg';
+  const thumbnails = [thumb1, thumb2, thumb3, thumb4];
 
   useEffect(() => {
     const setUser = () => {

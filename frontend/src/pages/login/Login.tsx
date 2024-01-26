@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { TextField, Button, Checkbox, Typography, Alert, AlertTitle } from '@mui/material';
-import logo from '../../assets/icons/managment.png';
-import image from '../../assets/images/Stuck at Home Imagination.jpg';
 import styles from './Login.module.css';
 
 import {
@@ -25,7 +23,8 @@ type FormData = {
 const LoginPage: React.FC = () => {
   const [rememberMe] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
-
+  const logo = '/assets/icons/managment.png';
+  const image = '/assets/images/login-intro.jpg';
   const navigate = useNavigate();
   const {
     control,
@@ -61,7 +60,7 @@ const LoginPage: React.FC = () => {
   return (
     <div className={styles.main}>
       <div className={styles.icon}>
-        <img src={logo} alt='logo' className={styles.logo_img} /> <span>Lothbrok</span>
+        <img src={logo} alt='logo' className={styles.logo_img} /> <span>Asana clone</span>
       </div>
       {errorMessage ? (
         <Alert severity='error' onClose={() => setErrorMessage('')}>

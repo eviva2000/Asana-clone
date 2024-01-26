@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { User, getAuth, onAuthStateChanged } from '@firebase/auth';
 import styles from './projectView.module.css';
-import thumbnail from '../../assets/images/thum4.svg';
 import { useProjectStore } from '../../store/task.store';
 import KanbanView from '../../components/kanbanView/KanbanView';
 import ListView from '../../components/listView/ListView';
@@ -32,6 +31,7 @@ const ProjectView = () => {
   const [projectMemberUsernames, setProjectMemberUsernames] = useState<string[]>();
   const [allAssignees, setAllassignees] = useState<{ first_name: string; uid: string }[]>();
   const { setProjectTitle } = useProjectStore();
+  const thumbnail = '/assets/images/thum4.svg';
   const categories: Categories = {
     Documentation: 'documentation',
     Ongoing: 'ongoing',
