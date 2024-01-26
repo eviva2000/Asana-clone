@@ -1,5 +1,4 @@
 import styles from './projectItem.module.css';
-import Calendar from '../../../assets/icons/calendar.png';
 import Assigned from 'assets/icons/assigned.png';
 import Circle from 'assets/icons/checked.png';
 import { Project } from 'types/project';
@@ -14,6 +13,7 @@ function TaskItem({ project }: TaskItemProps) {
     project;
   const navigate = useNavigate();
 
+  const calendarIcon = '/assets/icons/calendar.png';
   const completedPercentage =
     amount_of_completed_tasks && amount_of_tasks && +amount_of_completed_tasks
       ? ((amount_of_completed_tasks / amount_of_tasks) * 100).toFixed(0)
@@ -27,7 +27,7 @@ function TaskItem({ project }: TaskItemProps) {
           <h3 className={styles.title}>{title}</h3>
           <div className={styles.icon_container}>
             <p>
-              <img src={Calendar} alt='Calendar' />{' '}
+              <img src={calendarIcon} alt='Calendar' />{' '}
               {new Intl.DateTimeFormat('en-GB', {
                 year: 'numeric',
                 month: 'numeric',
