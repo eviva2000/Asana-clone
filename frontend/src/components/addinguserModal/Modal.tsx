@@ -1,7 +1,6 @@
 import { Autocomplete, Button, CircularProgress, Dialog, TextField } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { User } from '../../types/user';
-import api from '../../api';
 import styles from './modal.module.css';
 import axios from 'axios';
 

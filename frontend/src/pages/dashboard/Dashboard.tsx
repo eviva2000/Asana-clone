@@ -1,10 +1,9 @@
 import styles from './Dashboard.module.css';
 import { Outlet } from 'react-router-dom';
 import { Header, MenuDesktop } from '../../IndexForImport';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, getAuth, onAuthStateChanged } from '@firebase/auth';
-import api from '../../api';
 import { CircularProgress } from '@mui/material';
 
 const Dashboard = () => {

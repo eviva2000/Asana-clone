@@ -7,7 +7,6 @@ import thum3 from '../../assets/images/thum3.jpg';
 import thum4 from '../../assets/images/thum4.svg';
 import { Project } from '../../types/project';
 import Modal from '../../components/modal/Modal';
-import api from '../../api';
 import styles from './projectList.module.css';
 import ProjectsItems from './ProjectsItems';
 import { User as UserType } from '../../types/user';
@@ -32,7 +31,6 @@ function ProjectList() {
   const getProjects = async () => {
     try {
       if (userId) {
-        const req = await api();
         const res = await axios.get(`http://localhost:5000/api/project/user/${userId}`);
         const projects = await Promise.all(
           res.data.map(async (project: Project, index: number) => {
