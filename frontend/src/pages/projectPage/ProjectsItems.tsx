@@ -1,4 +1,4 @@
-import ProjectItem from './project_item/ProjectItem';
+import ProjectItem from './ProjectItem';
 import styles from './projectList.module.css';
 import { Project } from '../../types/project';
 
