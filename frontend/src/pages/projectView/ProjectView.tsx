@@ -6,7 +6,7 @@ import { useProjectStore } from '../../store/task.store';
 import KanbanView from '../../components/kanbanView/KanbanView';
 import ListView from '../../components/listView/ListView';
 import { Task } from '../../types/task';
-import { Project } from '../../types/project';
+import { Project } from '../../types/Project';
 import { Categories } from '../../types/categories';
 import { ViewProps } from '../../types/viewProps';
 import axios from 'axios';

@@ -1,5 +1,5 @@
 import styles from './projectItem.module.css';
-import { Project } from '../../types/project';
+import { Project } from '../../../types/Project';
 import { useNavigate } from 'react-router-dom';
 
 interface TaskItemProps {

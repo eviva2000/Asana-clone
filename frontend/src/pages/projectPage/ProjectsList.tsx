@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
 import axios from 'axios';
-import { Project } from '../../types/project';
+import { Project } from '../../types/Project';
 import Modal from '../../components/modal/Modal';
 import styles from './projectList.module.css';
 import ProjectsItems from './ProjectsItems';
