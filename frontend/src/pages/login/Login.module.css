@@ -8,19 +8,19 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #28246f;
 }
 
 .flex_container {
   display: flex;
   flex-flow: column;
-  align-items: flex-start;
 }
 
 .icon {
   cursor: pointer;
   margin: 1rem;
   display: flex;
-  color: #28246f;
+  color: #f8f9fd;
   align-items: center;
   font-weight: 700;
   gap: 0.5rem;
@@ -32,10 +32,10 @@
 }
 
 .login_content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 350px;
   padding: 0 1rem;
+}
+.login_content h1 {
+  margin: 0;
 }
 
 .style_label {
@@ -98,27 +98,22 @@
   border-radius: 8px;
   height: 3rem;
   margin-bottom: 3rem;
-  text-transform: lowercase;
+  border: 1px solid #f1f2f4 !important;
 }
 
 .forgot {
-  font: Inter;
-  padding-left: 25px;
   font-size: 15px;
   color: #0b5fae;
   text-decoration: none;
+  margin: 1rem 0;
 }
 
-@media only screen and (min-width: 850px) {
+@media only screen and (min-width: 768px) {
   .flex_container {
-    padding: 1rem;
-    padding-left: 7rem;
     flex-flow: row-reverse;
-    justify-content: space-between;
+    justify-content: center;
   }
-  .image {
-    padding: 0 4rem;
-  }
+
   .login_content {
     margin-left: 0;
   }

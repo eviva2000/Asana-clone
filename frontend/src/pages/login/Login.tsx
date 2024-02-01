@@ -23,8 +23,6 @@ type FormData = {
 const LoginPage: React.FC = () => {
   const [rememberMe] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const logo = '/assets/icons/managment.png';
-  const image = '/assets/images/login-intro.jpg';
   const navigate = useNavigate();
   const {
     control,
@@ -60,7 +58,7 @@ const LoginPage: React.FC = () => {
   return (
     <div className={styles.main}>
       <div className={styles.icon}>
-        <img src={logo} alt='logo' className={styles.logo_img} /> <span>Asana clone</span>
+        <span>Asana clone</span>
       </div>
       {errorMessage ? (
         <Alert severity='error' onClose={() => setErrorMessage('')}>
@@ -69,10 +67,7 @@ const LoginPage: React.FC = () => {
         </Alert>
       ) : null}
       <div className={styles.flex_container}>
-        <img className={styles.image} src={image} alt='Image' />
         <div className={styles.login_content}>
-          <h1>Log in</h1>
-
           <Typography
             style={{
               fontFamily: 'Poppins',
@@ -80,8 +75,9 @@ const LoginPage: React.FC = () => {
               color: '#89899C',
             }}
           >
-            Easy steps to enter the platform
+            Easy steps to enter your account
           </Typography>
+          <h1>Log in</h1>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
@@ -101,7 +97,7 @@ const LoginPage: React.FC = () => {
                   <TextField
                     fullWidth
                     {...field}
-                    placeholder='Input text here'
+                    placeholder='Email'
                     error={Boolean(errors.email)}
                     helperText={errors.email?.message}
                     className={styles.input_styles}
@@ -122,7 +118,7 @@ const LoginPage: React.FC = () => {
                     fullWidth
                     type='password'
                     {...field}
-                    placeholder='Input text here'
+                    placeholder='Password'
                     error={Boolean(errors.password)}
                     helperText={errors.password?.message}
                     className={styles.input_styles}
@@ -131,10 +127,6 @@ const LoginPage: React.FC = () => {
               )}
             />
             <div className={styles.rememberMe}>
-              <div>
-                <Checkbox /> Remeber me
-              </div>
-
               <Link to={'/forgot-password'} className={styles.forgot}>
                 Forgot password
               </Link>

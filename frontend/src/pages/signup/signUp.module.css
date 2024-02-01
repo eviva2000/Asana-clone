@@ -12,26 +12,15 @@
   align-items: flex-start;
 }
 
-.image {
-  align-self: center;
-  padding: 3rem;
-  width: clamp(15rem, 70%, 100rem);
-  max-height: 80vh;
-}
-
 .icon {
   cursor: pointer;
   margin: 1rem;
   display: flex;
-  color: #28246f;
+  color: #ffffff;
   align-items: center;
   font-weight: 700;
   gap: 0.5rem;
   font-size: 2rem;
-}
-
-.logo_img {
-  width: 2.5rem;
 }
 
 a {
@@ -39,8 +28,12 @@ a {
   cursor: pointer;
 }
 
-p {
+.paragraph {
   color: #89899c;
+  font-size: 1rem;
+}
+h1 {
+  color: #ffffff;
 }
 
 .form {
@@ -60,14 +53,15 @@ form {
   border: 1px solid #d8e0e8;
   border-radius: 8px;
   background: #f8f9fd;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .button_style {
   color: #f1f2f4;
   border-radius: 8px;
+  border: 1px solid #f1f2f4 !important;
   height: 3rem;
-  margin-bottom: 3rem;
+  margin: 2rem 0 !important;
   text-transform: lowercase;
 }
 
@@ -79,6 +73,7 @@ form {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #28246f;
 }
 
 .row {
@@ -110,15 +105,12 @@ form {
   margin-bottom: 3rem;
 }
 
-@media only screen and (min-width: 850px) {
+@media only screen and (min-width: 767px) {
   .flex_container {
     padding: 1rem;
     padding-left: 7rem;
     flex-flow: row-reverse;
     justify-content: space-between;
-  }
-  .image {
-    padding: 0 4rem;
   }
   .form {
     margin-left: '0';

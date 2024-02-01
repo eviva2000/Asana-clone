@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Button, TextField, InputLabel, Alert, AlertTitle } from '@mui/material';
+import styles from './signUp.module.css';
+import { Button, TextField, InputLabel, Checkbox, Alert, AlertTitle } from '@mui/material';
+import logo from '../../assets/icons/mangement.png';
+import image from '../../assets/images/Hands Show.svg';
 import { useNavigate } from 'react-router';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase_config';
+import { passwordPattern } from '../../passwordPattern';
 import { AuthErrorCodes } from 'firebase/auth';
-import axios from 'axios';
-import styles from './signUp.module.css';
+import api from '../../api';
 
 interface FormData {
   first_name: string;
@@ -17,23 +20,25 @@ interface FormData {
 
 const SignUp = () => {
   const { register, formState, handleSubmit } = useForm<FormData>();
+
   const { isDirty, isValid } = formState;
 
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [editingPass, setEditingPass] = useState<boolean>(false);
 
   const navigate = useNavigate();
-  const passwordPattern = /^(?=.*[A-Z])(?=.*[!_])[\w!_]+$/;
 
   const onSubmit: SubmitHandler<FormData> = async (data, e) => {
     e?.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const response = await api();
       try {
         if (auth.currentUser) {
-          await axios.post('http://localhost:5000/api/user', {
+          await response.post('/user', {
             uid: auth.currentUser.uid,
             first_name: data.first_name,
+            last_name: data.last_name,
             email: data.email,
           });
           navigate('/project');
@@ -58,7 +63,7 @@ const SignUp = () => {
   return (
     <div className={styles.sign_up}>
       <div className={styles.icon}>
-        <span>Asana clone</span>
+        <img src={logo} alt='logo' className={styles.logo_img} /> <span>Lothbrok</span>
       </div>
       {errorMessage ? (
         <Alert severity='error' onClose={() => setErrorMessage('')}>
@@ -67,22 +72,44 @@ const SignUp = () => {
         </Alert>
       ) : null}
       <div className={styles.flex_container}>
+        <img className={styles.image} src={image} alt='hand holding globe' />
         <div className={styles.form}>
-          <p className={styles.paragraph}>Make project management a breeze with us!</p>
-          <h1>Create an account</h1>
+          <h1>Sign up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <InputLabel htmlFor='first-name' style={{ color: '#55555F', fontSize: '12px' }}>
-              First name
-            </InputLabel>
-            <TextField
-              className={styles.input_styles}
-              {...register('first_name', {
-                required: 'First name is required',
-              })}
-              placeholder='First Name'
-            />
-            <InputLabel htmlFor='email' style={{ color: '#55555F', fontSize: '12px' }}>
-              Your email
+            <div className={styles.row}>
+              <div>
+                <InputLabel
+                  htmlFor='first-name'
+                  style={{ color: '#55555F', marginBottom: '0.5rem', width: '100%' }}
+                >
+                  First Name
+                </InputLabel>
+                <TextField
+                  className={styles.input_styles}
+                  {...register('first_name', {
+                    required: 'First name is required',
+                  })}
+                  placeholder='First Name'
+                />
+              </div>
+              <div>
+                <InputLabel
+                  htmlFor='last-name'
+                  style={{ color: '#55555F', marginBottom: '0.5rem' }}
+                >
+                  Last Name
+                </InputLabel>
+                <TextField
+                  {...register('last_name', {
+                    required: 'Last name is required',
+                  })}
+                  className={styles.input_styles}
+                  placeholder='Last Name'
+                />
+              </div>
+            </div>
+            <InputLabel htmlFor='email' style={{ color: '#55555F' }}>
+              Email
             </InputLabel>
             <TextField
               type='email'
@@ -96,7 +123,8 @@ const SignUp = () => {
               className={styles.input_styles}
               placeholder='Email'
             />
-            <InputLabel htmlFor='password' style={{ color: '#55555F', fontSize: '12px' }}>
+
+            <InputLabel htmlFor='password' style={{ color: '#55555F' }}>
               Password
             </InputLabel>
             <TextField
@@ -123,7 +151,9 @@ const SignUp = () => {
               placeholder='Password'
               className={styles.input_styles}
             />
-
+            <div>
+              <Checkbox /> Remeber me
+            </div>
             <Button
               className={styles.button_style}
               type='submit'
