@@ -5,15 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 function ForgotPasswordLayout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
-  const logo = '/assets/icons/managment.png';
-  const image = '/assets/images/forgetpass.svg';
   return (
     <div className={styles.forgot_pass}>
-      <div className={styles.icon}>
-        <img src={logo} alt='logo' className={styles.logo_img} /> <span>Asana clone</span>
+      <div className={styles.logo}>
+        <span>Asana clone</span>
       </div>
       <div className={styles.flex_container}>
-        <img className={styles.image} src={image} alt='girl sitting' />
+        {' '}
         <div className={styles.form}>
           <div className={styles.icon} onClick={() => navigate('/login')}>
             <ArrowBackIcon style={{ color: '#E3E4E8' }} />

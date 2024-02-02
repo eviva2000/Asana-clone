@@ -2,7 +2,6 @@
 
 .right_align {
   display: flex;
-  justify-content: flex-end;
   justify-content: center;
 }
 
@@ -30,13 +29,23 @@
   padding: 10px 25px 10px 25px;
   margin-top: 5px;
 }
+.no_project {
+  font-family: 'Manrope';
+  font-size: 1rem;
+  color: #2b283d;
+  margin: 6rem;
+  text-align: center;
+}
 
 @media only screen and (min-width: 768px) {
   .task_list {
     justify-content: unset;
   }
   .right_align {
-    margin-right: 2.5rem;
-    justify-content: flex-end;
+    margin-left: 1.5rem;
+    justify-content: flex-start;
+  }
+  .no_project {
+    font-size: 1.5rem;
   }
 }

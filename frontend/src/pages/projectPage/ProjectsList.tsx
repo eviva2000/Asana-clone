@@ -81,15 +81,15 @@ function ProjectList() {
     }
     closeModal();
   };
-
+  console.log(projects);
   return (
     <div className={styles.project_list_container}>
       <div className={styles.right_align}>
         <button className={styles.create_project} onClick={openModal}>
-          Create Project
+          Create a project
         </button>
       </div>
-      {projects ? (
+      {projects?.length ? (
         <>
           <ProjectsItems projects={projects} />
           {isModalOpen && (
@@ -102,7 +102,7 @@ function ProjectList() {
           )}
         </>
       ) : (
-        <div>Loading...</div>
+        <div className={styles.no_project}>You dont have any project yet!</div>
       )}
     </div>
   );

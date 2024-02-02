@@ -6,5 +6,5 @@ export class Task {
   user_uid = '';
   completed = false;
   priority = 'medium';
-  project_id: number | undefined = undefined;
+  project_id: number | undefined;
 }

@@ -10,7 +10,6 @@ import styles from './signUp.module.css';
 
 interface FormData {
   first_name: string;
-  last_name: string;
   email: string;
   password: string;
 }
